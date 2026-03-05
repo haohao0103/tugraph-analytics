@@ -136,9 +136,7 @@ public class GraphVectorIndex<K> implements IVectorIndex<K> {
      */
     @Override
     public K searchVectorIndex(boolean isVertex, String fieldName, float[] vector, int topK) {
-        try {
-            // Open index reader
-            IndexReader reader = DirectoryReader.open(directory);
+        try (IndexReader reader = DirectoryReader.open(directory)) {
             IndexSearcher searcher = new IndexSearcher(reader);
 
             // Create KNN vector query
@@ -165,8 +163,6 @@ public class GraphVectorIndex<K> implements IVectorIndex<K> {
             } else {
                 throw new IllegalArgumentException("Unsupported key type: " + keyClass.getName());
             }
-
-            reader.close();
 
             return result;
         } catch (IOException e) {
