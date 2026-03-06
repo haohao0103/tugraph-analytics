@@ -47,6 +47,7 @@ import org.apache.geaflow.dsl.udf.graph.JaccardSimilarity;
 import org.apache.geaflow.dsl.udf.graph.KCore;
 import org.apache.geaflow.dsl.udf.graph.KHop;
 import org.apache.geaflow.dsl.udf.graph.LabelPropagation;
+import org.apache.geaflow.dsl.udf.graph.Louvain;
 import org.apache.geaflow.dsl.udf.graph.PageRank;
 import org.apache.geaflow.dsl.udf.graph.SingleSourceShortestPath;
 import org.apache.geaflow.dsl.udf.graph.TriangleCount;
@@ -239,6 +240,7 @@ public class BuildInSqlFunctionTable extends ListSqlOperatorTable {
             .add(GeaFlowFunction.of(IncKHopAlgorithm.class))
             .add(GeaFlowFunction.of(LabelPropagation.class))
             .add(GeaFlowFunction.of(ConnectedComponents.class))
+            .add(GeaFlowFunction.of(Louvain.class))
             .build();
 
     public BuildInSqlFunctionTable(GQLJavaTypeFactory typeFactory) {
